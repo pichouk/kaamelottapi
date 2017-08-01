@@ -1,0 +1,6 @@
+{
+    "extends": "eslint-config-pichouk",
+    "rules": {
+      "no-multi-str": ["off"]
+    }
+}
