@@ -11,5 +11,9 @@
 	},
   "authentication": {
     "adminToken": "CHANGEME"
+  },
+  "mattermost": {
+    "enable": false,
+    "token": "REPLACE_OR_SET_TO_UNDEFINED"
   }
 }

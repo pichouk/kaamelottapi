@@ -15,9 +15,14 @@ const config = require(path.resolve(__dirname, 'config.json'));
 
 // Import routes
 const apiRoutes = require(path.resolve(__dirname, 'api', 'routes'));
+const mattermostRoutes = require(path.resolve(__dirname, 'mattermost', 'routes'));
 
 // CONSTANTS
 const baseApiPath = '/api/v1';
+const baseMattermostPath = '/mattermost';
+const protectedRoutes = [
+	baseApiPath
+];
 
 /**
  * Main function
@@ -45,7 +50,7 @@ async function main () {
 	// Parse JSON data
 	app.use(bodyParser.json());
 	// Protect admin routes (non-GET requests)
-	app.use(authMid.checkAuth);
+	app.use(authMid.checkAuth(protectedRoutes));
 
 	// ROUTES
 	app.get(baseApiPath + '/quote/random', apiRoutes.getRandomQuote);
@@ -57,6 +62,17 @@ async function main () {
 	app.post(baseApiPath + '/quote', apiRoutes.createQuote);
 	app.patch(baseApiPath + '/quote/:id', apiRoutes.modifyQuote);
 	app.delete(baseApiPath + '/quote/:id', apiRoutes.deleteQuote);
+
+	// Mattermost routes
+	if (config.mattermost.enable) {
+		// Parse body
+		app.use(bodyParser.urlencoded({ extended: true }));
+		// Verify token if necessary
+		if (config.mattermost.token) {
+			app.use(authMid.validateMattermost);
+		}
+		app.post(baseMattermostPath, mattermostRoutes.getQuote);
+	}
 
 
 	// Return 404 if incorrect request route

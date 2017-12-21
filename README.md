@@ -67,6 +67,11 @@ Currently API is on version 1. Which means that each requests path begin with `/
 }
 ```
 
+## Mattermost Slash command
+This API also propose a `/mattermost` endpoint which serve quotes for a Mattermost Slash command. You just have to create a Mattermost Slash command with this configuration:
+- request URL `https://kaamelott.kyane.fr/mattermost`
+- request method `POST` (**!! `GET` will not work**)
+
 ## Deploy
 ### Database
 If you want to host yourself this API, you first need a PostgreSQL database. You can use an existing one, or quickly deploy one with [the official Docker image](https://hub.docker.com/_/postgres/). You can use this docker-compose example:
@@ -89,6 +94,7 @@ The server need a configuration file. An example is proposed, you should copy it
 - database access/credentials
 - admin token
 - if you use a proxy in front of the application or not
+- if you enable or not Mattermost and (optionnal) the authorized token
 
 ### Run
 To run the server, you just need to install some dependencies (I use yarn) and run the server.
@@ -120,4 +126,5 @@ kaapi-app:
 ## TODO
 Some cool improvement for this repository
 - Manage character (and images ?) with API
-- Create a `mattermost` endpoint to handle Mattermost hooks 
+- Test that configuration is ok before starting app
+- Write some tests ?
