@@ -234,9 +234,8 @@ async function updateQuote (quote) {
 	};
 
 	// Run query
-	let res;
 	try {
-		res = await runQuery(query);
+		await runQuery(query);
 	} catch (e) {
 		console.error(e.message);
 		throw new Error('Impossible to update quote in database');
