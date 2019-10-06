@@ -109,7 +109,7 @@ cd utils/
 node loadJson.js --file data.json
 ```
 
-**I strongly recommend** to use Docker. You can find a Dockerfile example [on another Git repository](https://framagit.org/pichouk/dockerfiles/blob/master/kaamelottapi/Dockerfile) and use this docker-compose configuration to deploy:
+**I strongly recommend** to use Docker. Use the Dockerfile and this docker-compose configuration to deploy:
 ```yaml
 kaapi-app:
   image: kaapi-server
