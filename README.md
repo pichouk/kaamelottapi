@@ -72,6 +72,11 @@ This API also propose a `/mattermost` endpoint which serve quotes for a Mattermo
 - request URL `https://kaamelott.kyane.fr/mattermost`
 - request method `POST` (**!! `GET` will not work**)
 
+## Slack Slash command
+This API also propose a `/slack` endpoint which serve quotes for a Slack Slash command. You just have to create a Slack Slash command with this configuration:
+- request URL `https://kaamelott.kyane.fr/slack`
+- request method `POST` (**!! `GET` will not work**)
+
 ## Deploy
 ### Database
 If you want to host yourself this API, you first need a PostgreSQL database. You can use an existing one, or quickly deploy one with [the official Docker image](https://hub.docker.com/_/postgres/). You can use this docker-compose example:

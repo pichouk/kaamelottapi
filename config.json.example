@@ -16,4 +16,7 @@
     "enable": false,
     "token": "REPLACE_OR_SET_TO_UNDEFINED"
   }
+  "slack": {
+    "enable": false,
+  }
 }
